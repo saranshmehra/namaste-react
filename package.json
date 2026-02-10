@@ -1,0 +1,28 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "start:prod": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saranshmehra/namaste-react.git"
+  },
+  "author": "Saransh Mehra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saranshmehra/namaste-react/issues"
+  },
+  "homepage": "https://github.com/saranshmehra/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "browserslist": ["last 2 versions"]
+}

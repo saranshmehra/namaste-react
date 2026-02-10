@@ -1,26 +1,241 @@
-/*
-<div id='parent'>
-  <div id='child1'>
-    <h1>I'm an h1 tag</h1>
-    <h2>I'm an h2 tag</h2>
-  </div>
-  <div id='child2'>
-    <h1>I'm an h1 tag</h1>
-    <h2>I'm an h2 tag</h2>
-  </div>
-</div>
-*/
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const attributes = { id: "heading" };
-const h1 = "I'm an h1 tag";
-const h2 = "I'm an h2 tag";
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  [
-    React.createElement('div', { id: 'child1' }, [React.createElement('h1', {}, h1), React.createElement('h2', {}, h2)]),
-    React.createElement('div', { id: 'child2' }, [React.createElement('h1', {}, h1), React.createElement('h2', {}, h2)])
-  ]
-);
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://t3.ftcdn.net/jpg/08/29/90/88/360_F_829908823_kYsRKdQcIaYEAhHRAZTIXuSKvuVPif8w.jpg"
+        />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+const resList = [
+  {
+    id: "353404",
+    name: "RNR Biryani - Taste of 1953",
+    cloudinaryImageId: "titgwthozpmhyzjgdh5u",
+    locality: "Shivanahalli",
+    areaName: "Rajajinagar",
+    costForTwo: "₹350 for two",
+    cuisines: ["Biryani", "South Indian", "Kebabs"],
+    avgRating: 4.3,
+    parentId: "11620",
+    avgRatingString: "4.3",
+    totalRatingsString: "8.0K+",
+    promoted: true,
+    adTrackingId:
+      "cid=de9c42eb-ff5c-44df-92be-2bb6c615f3a9~p=0~adgrpid=de9c42eb-ff5c-44df-92be-2bb6c615f3a9#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=353404~plpr=COLLECTION~eid=04b588cd-84ef-4f0c-9e15-4ddd0703e919~srvts=1770551326849~collid=83639",
+    sla: {
+      deliveryTime: 50,
+      lastMileTravel: 6.6,
+      serviceability: "SERVICEABLE",
+      slaString: "45-55 mins",
+      lastMileTravelString: "6.6 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "1201253",
+    name: "1881 Dum House: Lucknow's Legacy",
+    cloudinaryImageId:
+      "FOOD_CATALOG/IMAGES/CMS/2025/10/13/9d4313dc-e72c-4915-a52d-ae411890ae62_9ae0f4a1-e997-43c2-8140-6716ad568024.jpg",
+    locality: "Lakshmi Road",
+    areaName: "Central Bangalore",
+    costForTwo: "₹200 for two",
+    cuisines: ["North Indian", "Biryani", "Awadhi"],
+    avgRating: 4.3,
+    parentId: "687728",
+    avgRatingString: "4.3",
+    totalRatingsString: "150",
+    sla: {
+      deliveryTime: 15,
+      lastMileTravel: 3,
+      serviceability: "SERVICEABLE",
+      slaString: "10-20 mins",
+      lastMileTravelString: "3.0 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "18975",
+    name: "Nandhana Palace",
+    cloudinaryImageId:
+      "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/21/2c004550-3e2f-4929-a6b4-7f2599e9e2d9_18975.jpg",
+    locality: "Rajajinagar",
+    areaName: "Rajajinagar",
+    costForTwo: "₹500 for two",
+    cuisines: ["Biryani", "Andhra", "South Indian", "North Indian"],
+    avgRating: 4.4,
+    parentId: "2120",
+    avgRatingString: "4.4",
+    totalRatingsString: "51K+",
+    promoted: true,
+    adTrackingId:
+      "cid=c273e05d-f06d-47a3-9827-dd57471149f2~p=1~adgrpid=c273e05d-f06d-47a3-9827-dd57471149f2#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=18975~plpr=COLLECTION~eid=2761d8a4-c408-4d0f-9801-56c4920d15a8~srvts=1770551326849~collid=83639",
+    sla: {
+      deliveryTime: 51,
+      lastMileTravel: 6.6,
+      serviceability: "SERVICEABLE",
+      slaString: "50-60 mins",
+      lastMileTravelString: "6.6 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "1060334",
+    name: "Bob's Bar",
+    cloudinaryImageId:
+      "FOOD_CATALOG/IMAGES/CMS/2025/3/24/5afc5222-172e-4809-bbc5-6d849b11b66e_7324f770-4776-4d8f-9907-de60af1d0202.jpeg",
+    locality: "Ashok Nagar",
+    areaName: "Wood Street",
+    costForTwo: "₹1000 for two",
+    cuisines: ["Biryani", "Desserts", "South Indian", "Bakery"],
+    avgRating: 4.5,
+    parentId: "10956",
+    avgRatingString: "4.5",
+    totalRatingsString: "358",
+    sla: {
+      deliveryTime: 34,
+      lastMileTravel: 2.8,
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+      lastMileTravelString: "2.8 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "439141",
+    name: "Biryani Blues",
+    cloudinaryImageId: "97377e54937c079fe269d744aa66274a",
+    locality: "Church Street",
+    areaName: "Church Street",
+    costForTwo: "₹400 for two",
+    cuisines: ["Biryani", "Kebabs", "Lucknowi", "Hyderabadi"],
+    avgRating: 4.3,
+    parentId: "13813",
+    avgRatingString: "4.3",
+    totalRatingsString: "2.7K+",
+    promoted: true,
+    adTrackingId:
+      "cid=3fddfe76-c81b-4a14-8ae6-70d2175fddd0~p=2~adgrpid=3fddfe76-c81b-4a14-8ae6-70d2175fddd0#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=439141~plpr=COLLECTION~eid=d8422c34-2714-4659-aa75-d7a0c1cf9106~srvts=1770551326849~collid=83639",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 2.3,
+      serviceability: "SERVICEABLE",
+      slaString: "35-40 mins",
+      lastMileTravelString: "2.3 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "1155551",
+    name: "GharSe - Homestyle & Healthy Tiffins",
+    cloudinaryImageId:
+      "RX_THUMBNAIL/IMAGES/VENDOR/2025/12/10/c7882a93-411f-4efd-a65b-2d6c8d0f5e23_1155551.JPG",
+    locality: "Lakshmi Road",
+    areaName: "Central Bangalore",
+    costForTwo: "₹200 for two",
+    cuisines: ["Biryani", "Thalis", "Home Food"],
+    avgRating: 4.6,
+    parentId: "663389",
+    avgRatingString: "4.6",
+    totalRatingsString: "129",
+    sla: {
+      deliveryTime: 25,
+      lastMileTravel: 3,
+      serviceability: "SERVICEABLE",
+      slaString: "20-30 mins",
+      lastMileTravelString: "3.0 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+  {
+    id: "102334",
+    name: "Dindigul Thalappakatti - Since 1957 ",
+    cloudinaryImageId:
+      "RX_THUMBNAIL/IMAGES/VENDOR/2025/9/21/39e9a28b-be1a-4764-8cfe-bb69e61448f4_102334.JPG",
+    locality: "Mg Road",
+    areaName: "Indiranagar",
+    costForTwo: "₹650 for two",
+    cuisines: [
+      "Biryani",
+      "Barbecue",
+      "South Indian",
+      "Chinese",
+      "North Indian",
+    ],
+    avgRating: 4.4,
+    parentId: "641506",
+    avgRatingString: "4.4",
+    totalRatingsString: "11K+",
+    promoted: true,
+    adTrackingId:
+      "cid=894f2bf4-ca58-492b-8cf4-2dec11bbc95e~p=3~adgrpid=894f2bf4-ca58-492b-8cf4-2dec11bbc95e#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=102334~plpr=COLLECTION~eid=eaaef84f-bd50-4f64-8965-92219194be2a~srvts=1770551326849~collid=83639",
+    sla: {
+      deliveryTime: 49,
+      lastMileTravel: 3.7,
+      serviceability: "SERVICEABLE",
+      slaString: "45-55 mins",
+      lastMileTravelString: "3.7 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+  },
+];
+
+const RestaurantCard = (props) => {
+  const { resData } = props;
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla: { deliveryTime } } = resData;
+  return (
+    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+      <img
+        className="res-logo"
+        alt="res-logo"
+        src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}
+      />
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRating} stars</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{deliveryTime} minutes</h4>
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        {
+          resList.map(res => <RestaurantCard key={res.id} resData={res} />)
+        }
+      </div>
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+
+root.render(<AppLayout />);
