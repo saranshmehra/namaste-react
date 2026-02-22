@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  useEffect(() => {
+    getRestaurantData();
+  }, []);
+
+  const getRestaurantData = async () => {
+    const resData = await fetch(
+      "https://namastedev.com/api/v1/listRestaurants"
+    );
+    const jsonData = await resData.json();
+    setListOfRestaurants(jsonData?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  };
+
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />
+  }
 
   return (
     <div className="body">
@@ -12,7 +28,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.avgRating > 4.3
+              (res) => res.info.avgRating > 4.3
             );
             setListOfRestaurants(filteredList);
           }}
@@ -22,7 +38,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {listOfRestaurants.map((res) => (
-          <RestaurantCard key={res.id} resData={res} />
+          <RestaurantCard key={res.info.id} resData={res.info} />
         ))}
       </div>
     </div>
