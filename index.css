@@ -63,3 +63,13 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.login {
+  height: 20px;
+  width: 90px;
+  margin-top: 20px;
+}
+
+.filter {
+  display: flex;
+}
